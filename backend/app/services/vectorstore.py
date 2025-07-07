@@ -7,7 +7,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders import TextLoader
 from dotenv import load_dotenv
 
-# 환경변수 로드 (백엔드에서 한 번만 실행되면 생략 가능)
+# 환경변수 로드
 load_dotenv(dotenv_path="C:/Users/user/Desktop/cheatycheaty/.env")
 openai_api_key = os.getenv("OPENAI_API_KEY")
 
@@ -22,7 +22,7 @@ def save_vectorstore(user_id: str, text_file_path: str):
     loader = TextLoader(text_file_path, encoding='utf-8')
     documents = loader.load()
 
-    splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+    splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=50)
     split_docs = splitter.split_documents(documents)
 
     # 임베딩 및 벡터 저장
