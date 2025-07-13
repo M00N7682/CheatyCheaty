@@ -1,25 +1,22 @@
-# backend/app/services/vectorstore.py
-
 import os
-from langchain.vectorstores import FAISS
-from langchain.embeddings import OpenAIEmbeddings
+from langchain_community.vectorstores import FAISS
+from langchain_community.embeddings import OpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.document_loaders import TextLoader
+from langchain_community.document_loaders import PyPDFLoader
 from dotenv import load_dotenv
 
-# 환경변수 로드
 load_dotenv(dotenv_path="C:/Users/user/Desktop/cheatycheaty/.env")
 openai_api_key = os.getenv("OPENAI_API_KEY")
 
 # 사용자별 저장 경로
 VECTORSTORE_DIR = "app/vectorstores"
 
-def save_vectorstore(user_id: str, text_file_path: str):
+def save_vectorstore(user_id: str, pdf_file_path: str):
     """
     텍스트 문서를 받아서 벡터스토어를 생성하고 저장
     """
-    # 문서 로드 및 쪼개기
-    loader = TextLoader(text_file_path, encoding='utf-8')
+    # PDF 문서 로드
+    loader = PyPDFLoader(pdf_file_path)
     documents = loader.load()
 
     splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=50)
@@ -46,5 +43,5 @@ def load_vectorstore(user_id: str) -> FAISS:
     if not os.path.exists(user_dir):
         raise FileNotFoundError(f"{user_id}의 vectorstore가 존재하지 않습니다.")
 
-    vectorstore = FAISS.load_local(user_dir, embeddings)
+    vectorstore = FAISS.load_local(user_dir, embeddings, allow_dangerous_deserialization=True)
     return vectorstore

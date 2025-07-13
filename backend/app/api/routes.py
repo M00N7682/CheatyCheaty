@@ -18,7 +18,7 @@ async def upload_file(user_id: str = Form(...), file: UploadFile = File(...)):
         temp_path = save_temp_file(user_id, file)
 
         # 2. 벡터스토어 생성 및 저장
-        save_vectorstore(user_id=user_id, text_file_path=temp_path)
+        save_vectorstore(user_id=user_id, pdf_file_path=temp_path)
 
         # 3. 임시 파일 삭제
         delete_file(temp_path)

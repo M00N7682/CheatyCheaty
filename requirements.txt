@@ -1,0 +1,17 @@
+# FastAPI
+fastapi
+uvicorn
+python-multipart
+python-dotenv
+
+# LangChain
+langchain
+langchain-community
+openai
+pypdf
+tiktoken
+faiss-cpu
+
+# CORS
+aiofiles  
+httpx    

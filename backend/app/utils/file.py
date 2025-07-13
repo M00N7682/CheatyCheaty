@@ -5,7 +5,7 @@ from fastapi import UploadFile
 
 TEMP_DIR = "app/temp"
 
-# 임시 저장 디렉토리 생성 (없으면)
+# 임시 저장 디렉토리 생성
 os.makedirs(TEMP_DIR, exist_ok=True)
 
 def save_temp_file(user_id: str, file: UploadFile) -> str:
