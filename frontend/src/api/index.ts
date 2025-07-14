@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:8000'; // FastAPI 서버 주소 (운영 시 변경)
+const API_BASE_URL = 'http://localhost:8000';
 
 export const uploadFile = async (user_id: string, file: File): Promise<string> => {
   const formData = new FormData();

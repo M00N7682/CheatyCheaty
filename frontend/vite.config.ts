@@ -1,18 +1,23 @@
 // vite.config.ts
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname, resolve } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export default defineConfig({
   plugins: [react()],
-  root: './', // 프로젝트 루트
-  publicDir: 'public', // 기본 설정이라 보통 그대로 둬도 됨
+  root: './',
+  publicDir: 'public',
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
+      '@': resolve(__dirname, 'src'),
     },
   },
   server: {
-    port: 5173, // 혹은 다른 포트
+    port: 3000,
+    host: true,
   },
 });
