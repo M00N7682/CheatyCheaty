@@ -33,10 +33,10 @@ const FileUploader: React.FC<Props> = ({ userId }) => {
 
   return (
     <div style={{ marginBottom: '2rem' }}>
-      <h2>📄 문서 업로드</h2>
+      <h2> File upload</h2>
       <input
         type="file"
-        accept=".txt"
+        accept=".pdf"
         onChange={(e) => setSelectedFile(e.target.files?.[0] || null)}
         style={{ marginBottom: '0.5rem', display: 'block' }}
       />

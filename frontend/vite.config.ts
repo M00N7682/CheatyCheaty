@@ -9,15 +9,24 @@ const __dirname = dirname(__filename);
 
 export default defineConfig({
   plugins: [react()],
+<<<<<<< HEAD
   root: './',
   publicDir: 'public',
+=======
+  root: './', 
+  publicDir: 'public', 
+>>>>>>> f8b1905 (FE, BE All Clear, Back log : Devops + CSS)
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
     },
   },
   server: {
+<<<<<<< HEAD
     port: 3000,
     host: true,
+=======
+    port: 5173,
+>>>>>>> f8b1905 (FE, BE All Clear, Back log : Devops + CSS)
   },
 });

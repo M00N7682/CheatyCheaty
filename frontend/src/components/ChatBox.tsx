@@ -35,7 +35,7 @@ const ChatBox: React.FC<Props> = ({ userId }) => {
 
   return (
     <div>
-      <h2> 챗봇 질문</h2>
+      <h2> Question </h2>
       <textarea
         placeholder="질문을 입력하세요..."
         value={question}

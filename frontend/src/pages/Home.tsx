@@ -10,7 +10,6 @@ const Home: React.FC = () => {
   return (
     <div style={{ maxWidth: '600px', margin: '2rem auto', padding: '1rem' }}>
       <h1> 사용자별 RAG 챗봇</h1>
-
       <div style={{ marginBottom: '1rem' }}>
         <label htmlFor="user-id">🆔 User ID</label>
         <input
