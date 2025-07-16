@@ -36,7 +36,6 @@ class QuestionRequest(BaseModel):
 @router.post("/chat")
 async def chat(request: QuestionRequest):
     try:
-        # 벡터스토어 로드 및 답변 생성
         vectorstore = load_vectorstore(request.user_id)
         answer = generate_answer(vectorstore, request.question)
         return {"answer": answer}
