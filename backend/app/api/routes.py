@@ -1,5 +1,5 @@
 # backend/app/api/routes.py
-
+import os
 from fastapi import APIRouter, UploadFile, File, Form
 from pydantic import BaseModel
 from fastapi.responses import JSONResponse
@@ -46,3 +46,8 @@ async def chat(request: QuestionRequest):
 
     except Exception as e:
         return JSONResponse(status_code=500, content={"error": str(e)})
+
+@router.get("/vectorstore/exists/{user_id}")
+def vectorstore_exists(user_id: str):
+    user_dir = os.path.join("app/vectorstores", user_id)
+    return {"exists": os.path.exists(user_dir)}

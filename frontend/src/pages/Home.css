@@ -1,0 +1,32 @@
+/* Home.css */
+
+.home-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.home-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.user-id-section {
+  margin-bottom: 1rem;
+}
+
+.user-id-label {
+  font-weight: 500;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.user-id-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}

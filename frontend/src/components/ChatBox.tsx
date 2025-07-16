@@ -1,7 +1,6 @@
-// frontend/src/components/ChatBox.tsx
-
 import React, { useState } from 'react';
 import { sendQuestion } from '../api';
+import './ChatBox.css';
 
 interface Props {
   userId: string;
@@ -34,22 +33,22 @@ const ChatBox: React.FC<Props> = ({ userId }) => {
   };
 
   return (
-    <div>
-      <h2> Question </h2>
+    <div className="chatbox-container">
+      <h2 className="chatbox-title">Question</h2>
       <textarea
+        className="chatbox-textarea"
         placeholder="질문을 입력하세요..."
         value={question}
         onChange={(e) => setQuestion(e.target.value)}
         rows={3}
-        style={{ width: '100%', marginBottom: '0.5rem' }}
       />
-      <button onClick={handleSend} disabled={loading}>
+      <button className="chatbox-button" onClick={handleSend} disabled={loading}>
         {loading ? '답변 생성 중...' : '질문하기'}
       </button>
 
-      {error && <p style={{ color: 'red', marginTop: '1rem' }}>{error}</p>}
+      {error && <p className="chatbox-error">{error}</p>}
       {answer && (
-        <div style={{ marginTop: '1rem', padding: '1rem', border: '1px solid #ccc' }}>
+        <div className="chatbox-answer">
           <strong>답변:</strong>
           <p>{answer}</p>
         </div>

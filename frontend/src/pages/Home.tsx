@@ -1,24 +1,23 @@
-// frontend/src/pages/Home.tsx
-
 import React, { useState } from 'react';
 import FileUploader from '../components/FileUploader';
 import ChatBox from '../components/ChatBox';
+import './Home.css';
 
 const Home: React.FC = () => {
   const [userId, setUserId] = useState('');
 
   return (
-    <div style={{ maxWidth: '600px', margin: '2rem auto', padding: '1rem' }}>
-      <h1> 사용자별 RAG 챗봇</h1>
-      <div style={{ marginBottom: '1rem' }}>
-        <label htmlFor="user-id">🆔 User ID</label>
+    <div className="home-container">
+      <h1 className="home-title">CheatyCheaty</h1>
+      <div className="user-id-section">
+        <label htmlFor="user-id" className="user-id-label">🆔 User ID</label>
         <input
           id="user-id"
           type="text"
-          placeholder="User ID 입력"
+          placeholder="ID를 입력해주세요(영문)"
           value={userId}
           onChange={(e) => setUserId(e.target.value)}
-          style={{ display: 'block', marginTop: '0.5rem', width: '100%' }}
+          className="user-id-input"
         />
       </div>
 

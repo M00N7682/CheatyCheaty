@@ -1,7 +1,6 @@
-// frontend/src/components/FileUploader.tsx
-
 import React, { useState } from 'react';
 import { uploadFile } from '../api';
+import './FileUploader.css';
 
 interface Props {
   userId: string;
@@ -25,26 +24,34 @@ const FileUploader: React.FC<Props> = ({ userId }) => {
       const result = await uploadFile(userId, selectedFile);
       setMessage(result);
     } catch (error: any) {
-      setMessage(error.message);
+      setMessage(error.message || '오류가 발생했습니다.');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div style={{ marginBottom: '2rem' }}>
-      <h2> File upload</h2>
+    <div className="file-uploader">
+      <h2 className="file-uploader-title">File Upload</h2>
       <input
         type="file"
         accept=".pdf"
         onChange={(e) => setSelectedFile(e.target.files?.[0] || null)}
-        style={{ marginBottom: '0.5rem', display: 'block' }}
+        className="file-uploader-input"
       />
-      <button onClick={handleUpload} disabled={loading}>
+      <button
+        onClick={handleUpload}
+        disabled={loading}
+        className="file-uploader-button"
+      >
         {loading ? '업로드 중...' : '업로드'}
       </button>
       {message && (
-        <p style={{ marginTop: '1rem', color: message.includes('성공') ? 'green' : 'red' }}>
+        <p
+          className={`file-uploader-message ${
+            message.includes('성공') ? 'success' : 'error'
+          }`}
+        >
           {message}
         </p>
       )}
